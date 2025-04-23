@@ -3,14 +3,28 @@ name: Deploy BackstopJS report to GitHub Pages
 on:
   push:
     branches:
-      - main  # this runs the workflow when you push to main
+      - main  # Runs when you push to main
 
 jobs:
-  deploy:
+  run-backstop:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main branch
+      - name: Checkout the code
         uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Or your preferred version
+
+      - name: Install dependencies
+        run: npm install  # Ensure backstopjs and other dependencies are installed
+
+      - name: Run BackstopJS reference
+        run: npx backstop reference  # Creates the reference images
+
+      - name: Run BackstopJS test
+        run: npx backstop test  # Runs the visual tests
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
