@@ -34,10 +34,10 @@ jobs:
           node generate-config.js
 
       - name: Run Backstop Reference
-        run: npx backstop reference
+        run: npx backstop reference --config=backstop.config.js
 
       - name: Run Backstop Test
-        run: npx backstop test
+        run: npx backstop test --config=backstop.config.js
 
       - name: Deploy HTML Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
