@@ -1,0 +1,11 @@
+{
+  "name": "backstopjs-tests",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node generate-config.js && backstop test"
+  },
+  "dependencies": {
+    "backstopjs": "^6.0.0",
+    "puppeteer": "^19.0.0"
+  }
+}
